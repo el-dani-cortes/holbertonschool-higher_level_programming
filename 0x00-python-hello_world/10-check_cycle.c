@@ -11,7 +11,7 @@ int check_cycle(listint_t *list)
 
 	if (!list || !list->next)
 		return (0);
-	while (advance && list)
+	while (advance && list && advance->next)
 	{
 		advance = advance->next->next;
 		list = list->next;
