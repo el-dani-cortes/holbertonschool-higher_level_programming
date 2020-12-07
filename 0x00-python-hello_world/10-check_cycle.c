@@ -12,10 +12,9 @@ int check_cycle(listint_t *list)
 
 	if (!list && !list->next)
 		return (0);
-	while (advance)
+	while (advance && current)
 	{
-		advance = advance->next;
-		advance = advance->next;
+		advance = advance->next->next;
 		current = current->next;
 		if (advance == current)
 			return (1);
