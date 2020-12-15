@@ -9,5 +9,7 @@ def max_integer(my_list=[]):
         Return the biggest integer of a list.
         None if list is empty.
     """
-    my_list.sort()
-    return(my_list[-1])
+    if my_list:
+        my_list.sort()
+        return my_list[-1]
+    return None
