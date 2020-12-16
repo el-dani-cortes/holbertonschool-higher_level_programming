@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * is_palindrome - Function checks if a singly linked list is a palindrome
+ * is_palidrome - Function checks if a singly linked list is a palindrome
  * @head: Head of the single linked list.
  *
  * Return: 0 if it is not a palindrome, 1 if it is a palindrome.
@@ -17,11 +17,11 @@ int is_palindrome(listint_t **head)
 		advance = advance->next;
 		lenght++;
 	}
+	behind = *head;
 	while (position != lenght / 2)
 	{
 		advance = *head;
-		behind = *head;
-		for (i = 0; i < position; i++)
+		if (position != 0)
 			behind = behind->next;
 		for (i = 0; i < lenght - (position + 1); i++)
 			advance = advance->next;
@@ -29,5 +29,5 @@ int is_palindrome(listint_t **head)
 			return (0);
 		position++;
 	}
-	return (1);
+	return(1);
 }
