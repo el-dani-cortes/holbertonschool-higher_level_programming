@@ -11,8 +11,7 @@ def best_score(a_dictionary):
     """
     if a_dictionary is not None:
         new_dictionary = sorted(a_dictionary.values())
-        best_score = new_dictionary[-1]
         for name, value in a_dictionary.items():
-            if value == best_score:
+            if value == new_dictionary[-1]:
                 return name
     return None
