@@ -27,11 +27,14 @@ class Square:
            Method my_print
 
         """
-        blank_line = '\n' * self.position[1]
-        hash_symbol = '#' * self.__size + '\n'
-        space = ' ' * self.__size
-        message = blank_line + (space + hash_symbol) * self.__size
-        return message[:-1]
+        if self.__size == 0:
+            return ""
+        else:
+            blank_line = '\n' * self.position[1]
+            hash_symbol = '#' * self.__size + '\n'
+            space = ' ' * self.__size
+            message = blank_line + (space + hash_symbol) * self.__size
+            return message[:-1]
 
     def area(self):
         """Method that calculate the area of a square.
