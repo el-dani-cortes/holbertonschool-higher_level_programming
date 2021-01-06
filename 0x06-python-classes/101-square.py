@@ -32,9 +32,9 @@ class Square:
         else:
             blank_line = '\n' * self.position[1]
             hash_symbol = '#' * self.__size + '\n'
-            space = ' ' * self.__size
+            space = ' ' * self.__position[0]
             message = blank_line + (space + hash_symbol) * self.__size
-            return message[:-1]
+        return message[:-1]
 
     def area(self):
         """Method that calculate the area of a square.
