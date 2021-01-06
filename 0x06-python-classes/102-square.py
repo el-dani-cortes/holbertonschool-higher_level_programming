@@ -59,7 +59,6 @@ class Square:
         else:
             raise TypeError('size must be an integer')
 
-
     def __eq__(self, other):
         return self.area() == other.area()
 
