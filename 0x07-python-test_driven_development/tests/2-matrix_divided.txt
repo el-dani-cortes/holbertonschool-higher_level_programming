@@ -176,12 +176,6 @@ This is an test text file. These are the possible test cases:
     ...
     TypeError: matrix_divided() missing 1 required positional argument: 'div'
 
-    ##### Check when pass more than two arguments #####
-    >>> matrix_divided([[1, 2, 3], [4, 5, 6]])
-    Traceback (most recent call last):
-    ...
-    TypeError: matrix_divided() missing 1 required positional argument: 'div'
-
     ##### Check when a bolean data type is passed #####
     >>> matrix_divided([[1, True, 3], [4, 5, 6]], 3)
     Traceback (most recent call last):
@@ -200,14 +194,14 @@ This is an test text file. These are the possible test cases:
     ...
     TypeError: div must be a number
 
-    ##### Check when a NoneType is passed as divisor #####
-    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], None)
-    Traceback (most recent call last):
-    ...
-    TypeError: div must be a number
-
     ##### Check when a divisor is passed as diferent data type #####
     >>> matrix_divided([[1, 2, 3], [4, 5, 6]], None)
     Traceback (most recent call last):
     ...
     TypeError: div must be a number
+
+    ##### Check when there are not arguments #####
+    >>> matrix_divided()
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'

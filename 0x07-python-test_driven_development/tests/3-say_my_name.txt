@@ -133,3 +133,12 @@ This is an test text file. These are the possible test cases:
     Traceback (most recent call last):
     ...
     TypeError: last_name must be a string
+
+    ##### check when is passed a new line #####
+    >>> say_my_name("\nDaniel", "Cortes")
+    My name is 
+    Daniel Cortes
+
+    ##### check when has space in the string #####
+    >>> say_my_name("       Daniel     ", "     Cortes    ")
+    My name is        Daniel           Cortes    

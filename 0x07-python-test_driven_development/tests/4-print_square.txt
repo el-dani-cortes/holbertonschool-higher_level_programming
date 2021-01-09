@@ -161,3 +161,7 @@ This is an test text file. These are the possible test cases:
     ####
     ####
     ####
+
+    ##### Check for a result of a operation #####
+    >>> print_square(2 // 2)
+    #
