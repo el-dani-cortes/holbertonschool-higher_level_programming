@@ -1,0 +1,167 @@
+The ``4-print_square`` module
+======================
+
+Using ``print_square``
+-------------------
+
+This is an test text file. These are the possible test cases:
+
+    ##### Importing the function from the module #####
+    >>> print_square = __import__('4-print_square').print_square
+
+    ##### Check that the file is executable #####
+    >>> import os
+    >>> os.access('4-print_square.py', os.X_OK)
+    True
+
+    ##### Check for the documentation of the module #####
+    >>> len(__import__("4-print_square").__doc__) > 1
+    True
+
+    ##### Check for the documentation of the function #####
+    >>> len(__import__("4-print_square").print_square.__doc__) > 1
+    True
+
+    ##### Check for pep8 style #####
+    >>> os.popen("pep8 4-print_square.py").read()
+    ''
+
+    ##### Check for a newline at the end of the file #####
+    >>> os.popen("cat -e 4-print_square.py | tail -1").read()[-1]
+    '\n'
+
+    ##### Check for the file has a shebang #####
+    >>> os.popen("cat 4-print_square.py | head -1").read()
+    '#!/usr/bin/python3\n'
+
+    ##### Check that the README file exists #####
+    >>> cwd = os.getcwd()
+    >>> check_readme = cwd + '/README.md'
+    >>> os.path.exists(check_readme)
+    True
+
+    ##### Check for a positive size #####
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+
+    ##### Check for a negative size #####
+    >>> print_square(-4)
+    Traceback (most recent call last):
+    ...
+    ValueError: size must be >= 0
+
+    ##### Check for a size equal #####
+    >>> print_square(0)
+
+
+    ##### Check for two digits nummber #####
+    >>> print_square(10)
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+
+    ##### Check for a empty argument #####
+    >>> print_square()
+    Traceback (most recent call last):
+    ...
+    TypeError: print_square() missing 1 required positional argument: 'size'
+
+    ##### Check for a float number #####
+    >>> print_square(4.3)
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+    ##### Check for a negative float number #####
+    >>> print_square(-4.3)
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+    ##### when is passed a sting #####
+    >>> print_square("four")
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+    ##### Check for a float number as a 0.0 #####
+    >>> print_square(0.0)
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+    ##### Check for a NoneType #####
+    >>> print_square(None)
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+    ##### Check for a boolean type #####
+    >>> print_square(True)
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+    ##### Check for a diferent type #####
+    >>> print_square({"size" : 4})
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+    ##### Check for a huge number #####
+    >>> print_square(100e+1000)
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+    ##### Check for a nan as argument #####
+    >>> print_square(100e+1000 / 100e+1000)
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+    ##### Check for a result of a operation #####
+    >>> print_square(20 / 5)
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+    ##### Check for a result of a operation #####
+    >>> print_square(5 + 5)
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+
+    ##### Check for a result of a operation #####
+    >>> print_square(2 - 4)
+    Traceback (most recent call last):
+    ...
+    ValueError: size must be >= 0
+
+    ##### Check for a result of a operation #####
+    >>> print_square(2 * 2)
+    ####
+    ####
+    ####
+    ####
+
+    ##### Check for a result of a operation #####
+    >>> print_square(2 // 2)
+    #
