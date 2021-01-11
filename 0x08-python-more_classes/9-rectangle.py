@@ -98,7 +98,6 @@ class Rectangle:
             Perimeter value of the rectangle.
 
         """
-        Rectangle.number_of_instances += 1
         if self.width == 0 or self.height == 0:
             return 0
         else:
@@ -119,7 +118,6 @@ class Rectangle:
         else:
             hash_line = str(self.print_symbol) * self.width
             rectangle = (hash_line + '\n') * (self.height - 1) + hash_line
-        Rectangle.number_of_instances += 1
         return rectangle
 
     def __repr__(self):
@@ -133,7 +131,6 @@ class Rectangle:
             Formal representation of a object instance.
 
         """
-        Rectangle.number_of_instances += 1
         representation = "Rectangle({}, {})".format(
             self.width, self.height)
         return representation
