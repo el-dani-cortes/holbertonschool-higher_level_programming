@@ -109,6 +109,9 @@ class Rectangle:
             A rectangle represented by character #.
 
         """
-        hash_line = '#' * self.__width
-        rectangle = (hash_line + '\n') * (self.__height - 1) + hash_line
+        if self.__width == 0 or self.__height == 0:
+            return ""
+        else:
+            hash_line = '#' * self.__width
+            rectangle = (hash_line + '\n') * (self.__height - 1) + hash_line
         return rectangle
