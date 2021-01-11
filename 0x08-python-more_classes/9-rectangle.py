@@ -86,7 +86,7 @@ class Rectangle:
 
         """
         Rectangle.number_of_instances += 1
-        return self.__width * self.__height
+        return self.width * self.height
 
     def perimeter(self):
         """Method that calculates perimeter of a rectangle.
@@ -99,10 +99,10 @@ class Rectangle:
 
         """
         Rectangle.number_of_instances += 1
-        if self.__width == 0 or self.__height == 0:
+        if self.width == 0 or self.height == 0:
             return 0
         else:
-            return (self.__width + self.__height) * 2
+            return (self.width + self.height) * 2
 
     def __str__(self):
         """Method that returns a rectangle by # character.
@@ -114,11 +114,11 @@ class Rectangle:
             A rectangle represented by character #.
 
         """
-        if self.__width == 0 or self.__height == 0:
+        if self.width == 0 or self.height == 0:
             return ""
         else:
-            hash_line = str(self.print_symbol) * self.__width
-            rectangle = (hash_line + '\n') * (self.__height - 1) + hash_line
+            hash_line = str(self.print_symbol) * self.width
+            rectangle = (hash_line + '\n') * (self.height - 1) + hash_line
         Rectangle.number_of_instances += 1
         return rectangle
 
@@ -135,7 +135,7 @@ class Rectangle:
         """
         Rectangle.number_of_instances += 1
         representation = "Rectangle({}, {})".format(
-            self.__width, self.__height)
+            self.width, self.height)
         return representation
 
     def __del__(self):
