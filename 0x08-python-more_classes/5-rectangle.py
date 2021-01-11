@@ -128,7 +128,6 @@ class Rectangle:
             self.__width, self.__height)
         return representation
 
-
     def __del__(self):
         """Method that deletes a object.
 
