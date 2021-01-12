@@ -123,7 +123,7 @@ class Rectangle:
             return ""
         else:
             hash_line = '#' * self.width
-            rectangle = (hash_line + '\n') * (self.__height - 1) + hash_line
+            rectangle = (hash_line + '\n') * (self.height - 1) + hash_line
         return rectangle
 
     def __repr__(self):
@@ -138,7 +138,7 @@ class Rectangle:
 
         """
         representation = "Rectangle({}, {})".format(
-            self.__width, self.__height)
+            self.width, self.height)
         return representation
 
     def __del__(self):
