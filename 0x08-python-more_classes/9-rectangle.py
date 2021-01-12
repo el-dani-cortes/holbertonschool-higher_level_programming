@@ -9,40 +9,9 @@ class Rectangle:
 
     def __init__(self, width=0, height=0):
         """Init method to initialized a instance"""
-        self.height = height
         self.width = width
+        self.height = height
         Rectangle.number_of_instances += 1
-
-    @property
-    def width(self):
-        """Method getter for width atributte.
-
-        Args:
-            Not arguments.
-
-        Return:
-            The current value of the width atributte.
-
-        """
-        return self.__width
-
-    @width.setter
-    def width(self, value):
-        """Method setter for width atributte.
-
-        Args:
-            value(int): width value of the rectangle.
-
-        Return:
-            Always nothing.
-
-        """
-        if type(value) is not int:
-            raise TypeError("width must be an integer")
-        elif value < 0:
-            raise ValueError("width must be >= 0")
-        else:
-            self.__width = value
 
     @property
     def height(self):
@@ -74,6 +43,37 @@ class Rectangle:
             raise ValueError("height must be >= 0")
         else:
             self.__height = value
+
+    @property
+    def width(self):
+        """Method getter for width atributte.
+
+        Args:
+            Not arguments.
+
+        Return:
+            The current value of the width atributte.
+
+        """
+        return self.__width
+
+    @width.setter
+    def width(self, value):
+        """Method setter for width atributte.
+
+        Args:
+            value(int): width value of the rectangle.
+
+        Return:
+            Always nothing.
+
+        """
+        if type(value) is not int:
+            raise TypeError("width must be an integer")
+        elif value < 0:
+            raise ValueError("width must be >= 0")
+        else:
+            self.__width = value
 
     def area(self):
         """Method that calculates area of a rectangle.
