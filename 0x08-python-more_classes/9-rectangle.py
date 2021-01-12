@@ -8,33 +8,42 @@ class Rectangle:
     print_symbol = '#'
 
     def __init__(self, width=0, height=0):
-        """Init method to initialized a instance"""
+        """Init method to initialized a instance.
+
+        Args:
+           width(int): Size of the width of the rectangle.
+           height(int): Size of the height of the rectangle.
+
+        Return:
+            The current value of the width atributte.
+
+        """
         self.width = width
         self.height = height
         Rectangle.number_of_instances += 1
 
     @property
     def height(self):
-        """Method getter for height atributte.
+        """Method getter for height atributte
 
         Args:
-            Not arguments.
+            Not arguments
 
         Return:
-            The current value of the height atributte.
+            The current value of the height atributte
 
         """
         return self.__height
 
     @height.setter
     def height(self, value):
-        """Method setter for height atributte.
+        """Method setter for height atributte
 
         Args:
-            value(int): height value of the rectangle.
+            value(int): height value of the rectangle
 
         Return:
-            Always nothing.
+            Always nothing
 
         """
         if type(value) is not int:
@@ -46,26 +55,26 @@ class Rectangle:
 
     @property
     def width(self):
-        """Method getter for width atributte.
+        """Method getter for width atributte
 
         Args:
-            Not arguments.
+            Not arguments
 
         Return:
-            The current value of the width atributte.
+            The current value of the width atributte
 
         """
         return self.__width
 
     @width.setter
     def width(self, value):
-        """Method setter for width atributte.
+        """Method setter for width atributte
 
         Args:
-            value(int): width value of the rectangle.
+            value(int): width value of the rectangle
 
         Return:
-            Always nothing.
+            Always nothing
 
         """
         if type(value) is not int:
@@ -85,7 +94,6 @@ class Rectangle:
             Area value of the rectangle.
 
         """
-        Rectangle.number_of_instances += 1
         return self.width * self.height
 
     def perimeter(self):
