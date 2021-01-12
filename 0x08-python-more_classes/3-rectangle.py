@@ -6,40 +6,18 @@ class Rectangle:
     """Class that defines a rectangle"""
 
     def __init__(self, width=0, height=0):
-        """Init method to initialized a instance"""
-        self.height = height
+        """Init method to initialized a instance.
+
+        Args:
+           width(int): Size of the width of the rectangle.
+           height(int): Size of the height of the rectangle.
+
+        Return:
+            The current value of the width atributte.
+
+        """
         self.width = width
-
-    @property
-    def width(self):
-        """Method getter for width atributte
-
-        Args:
-            Not arguments
-
-        Return:
-            The current value of the width atributte
-
-        """
-        return self.__width
-
-    @width.setter
-    def width(self, value):
-        """Method setter for width atributte
-
-        Args:
-            value(int): width value of the rectangle
-
-        Return:
-            Always nothing
-
-        """
-        if type(value) is not int:
-            raise TypeError("width must be an integer")
-        elif value < 0:
-            raise ValueError("width must be >= 0")
-        else:
-            self.__width = value
+        self.height = height
 
     @property
     def height(self):
@@ -72,6 +50,37 @@ class Rectangle:
         else:
             self.__height = value
 
+    @property
+    def width(self):
+        """Method getter for width atributte
+
+        Args:
+            Not arguments
+
+        Return:
+            The current value of the width atributte
+
+        """
+        return self.__width
+
+    @width.setter
+    def width(self, value):
+        """Method setter for width atributte
+
+        Args:
+            value(int): width value of the rectangle
+
+        Return:
+            Always nothing
+
+        """
+        if type(value) is not int:
+            raise TypeError("width must be an integer")
+        elif value < 0:
+            raise ValueError("width must be >= 0")
+        else:
+            self.__width = value
+
     def area(self):
         """Method that calculates area of a rectangle.
 
@@ -82,7 +91,7 @@ class Rectangle:
             Area value of the rectangle.
 
         """
-        return self.__width * self.__height
+        return self.width * self.height
 
     def perimeter(self):
         """Method that calculates perimeter of a rectangle.
@@ -94,10 +103,10 @@ class Rectangle:
             Perimeter value of the rectangle.
 
         """
-        if self.__width == 0 or self.__height == 0:
+        if self.width == 0 or self.height == 0:
             return 0
         else:
-            return (self.__width + self.__height) * 2
+            return (self.width + self.height) * 2
 
     def __str__(self):
         """Method that returns a rectangle by # character.
@@ -109,9 +118,9 @@ class Rectangle:
             A rectangle represented by character #.
 
         """
-        if self.__width == 0 or self.__height == 0:
+        if self.width == 0 or self.height == 0:
             return ""
         else:
-            hash_line = '#' * self.__width
-            rectangle = (hash_line + '\n') * (self.__height - 1) + hash_line
+            hash_line = '#' * self.width
+            rectangle = (hash_line + '\n') * (self.height - 1) + hash_line
         return rectangle
