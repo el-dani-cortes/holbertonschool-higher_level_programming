@@ -118,8 +118,11 @@ class Rectangle:
             A rectangle represented by character #.
 
         """
-        hash_line = '#' * self.width
-        rectangle = (hash_line + '\n') * (self.height - 1) + hash_line
+        if self.width == 0 or self.height == 0:
+            return ""
+        else:
+            hash_line = '#' * self.width
+            rectangle = (hash_line + '\n') * (self.height - 1) + hash_line
         return rectangle
 
     def __repr__(self):
