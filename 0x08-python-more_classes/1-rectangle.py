@@ -6,40 +6,18 @@ class Rectangle:
     """Class that defines a rectangle"""
 
     def __init__(self, width=0, height=0):
-        """Init method to initialized a instance"""
-        self.height = height
+        """Init method to initialized a instance.
+
+        Args:
+           width(int): Size of the width of the rectangle.
+           height(int): Size of the height of the rectangle.
+
+        Return:
+            The current value of the width atributte.
+
+        """
         self.width = width
-
-    @property
-    def width(self):
-        """Method getter for width atributte
-
-        Args:
-            Not arguments
-
-        Return:
-            The current value of the width atributte
-
-        """
-        return self.__width
-
-    @width.setter
-    def width(self, value):
-        """Method setter for width atributte
-
-        Args:
-            value(int): width value of the rectangle
-
-        Return:
-            Always nothing
-
-        """
-        if type(value) is not int:
-            raise TypeError("width must be an integer")
-        elif value < 0:
-            raise ValueError("width must be >= 0")
-        else:
-            self.__width = value
+        self.height = height
 
     @property
     def height(self):
@@ -71,3 +49,34 @@ class Rectangle:
             raise ValueError("height must be >= 0")
         else:
             self.__height = value
+
+    @property
+    def width(self):
+        """Method getter for width atributte
+
+        Args:
+            Not arguments
+
+        Return:
+            The current value of the width atributte
+
+        """
+        return self.__width
+
+    @width.setter
+    def width(self, value):
+        """Method setter for width atributte
+
+        Args:
+            value(int): width value of the rectangle
+
+        Return:
+            Always nothing
+
+        """
+        if type(value) is not int:
+            raise TypeError("width must be an integer")
+        elif value < 0:
+            raise ValueError("width must be >= 0")
+        else:
+            self.__width = value
