@@ -41,7 +41,7 @@ class Rectangle(BaseGeometry):
                    Always nothing.
 
                 """
-                self.integer_validator(str(width), width)
+                self.integer_validator("width", width)
                 self.__width = width
-                self.integer_validator(str(height), height)
+                self.integer_validator("height", height)
                 self.__height = height
