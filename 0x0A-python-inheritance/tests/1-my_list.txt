@@ -1,0 +1,41 @@
+The ``1-my_list`` module
+======================
+
+Using ``Class MyList that inherits from list``
+-------------------
+
+This is an test text file. These are the possible test cases:
+
+##### Importing the function from the module #####
+        >>> MyList = __import__('1-my_list').MyList
+
+##### Check that the file is executable #####
+        >>> import os
+	    >>> os.access('1-my_list.py', os.X_OK)
+	        True
+
+##### Check that the README file exists #####
+        >>> cwd = os.getcwd()
+	    >>> check_readme = cwd + '/README.md'
+	        >>> os.path.exists(check_readme)
+		    True
+
+##### Check for the documentation of the module #####
+        >>> len(__import__("1-my_list").__doc__) > 10
+	    True
+
+##### Check for the documentation of the function #####
+        >>> len(__import__("1-my_list").print_sorted.__doc__) > 10
+	    True
+
+##### Check for pep8 style #####
+        >>> os.popen("pep8 1-my_list.py").read()
+	    ''
+
+##### Check for a newline at the end of the file #####
+        >>> os.popen("cat -e 1-my_list.py | tail -1").read()[-1]
+	    '\n'
+
+##### Check for the file has a shebang #####
+        >>> os.popen("cat 1-my_list.py | head -1").read()
+	    '#!/usr/bin/python3\n'
