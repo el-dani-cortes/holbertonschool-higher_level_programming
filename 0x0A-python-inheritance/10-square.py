@@ -17,7 +17,7 @@ class Square(Rectangle):
                    Always nothing.
 
                 """
-                self.integer_validator(str(size), size)
+                self.integer_validator("size", size)
                 self.__size = size
                 super().__init__(size, size)
 
