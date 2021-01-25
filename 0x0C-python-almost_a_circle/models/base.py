@@ -1,6 +1,9 @@
 #!/usr/bin/pytho3
 """Module base"""
 import json
+import csv
+from collections import OrderedDict
+import turtle
 
 
 class Base:
@@ -40,15 +43,15 @@ class Base:
             of list_objs to a file
         """
         filename = "{}.json".format(cls.__name__)
+        list_dictionaries = []
+        for obj in list_objs:
+            dictionary = obj.to_dictionary()
+            list_dictionaries.append(dictionary)
+        json_string = Base.to_json_string(list_dictionaries)
         with open(filename, 'w') as f:
             if list_objs is None:
                 f.write("[]")
             else:
-                list_dictionaries = []
-                for obj in list_objs:
-                    dictionary = obj.to_dictionary()
-                    list_dictionaries.append(dictionary)
-                json_string = Base.to_json_string(list_dictionaries)
                 f.write(json_string)
 
     @staticmethod
@@ -97,3 +100,79 @@ class Base:
         except FileNotFoundError:
             return instance_list
         return instance_list
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Method that serializes in CSV
+        """
+        filename = "{}.csv".format(cls.__name__)
+        data = []
+        for obj in list_objs:
+            dictionary = obj.to_dictionary()
+            data.append(dictionary)
+        rectangle_header = ['id', 'width', 'height', 'x', 'y']
+        square_header = ['id', 'size', 'x', 'y']
+        with open(filename, mode='w') as f:
+            if cls.__name__ == 'Rectangle':
+                result = csv.DictWriter(f, fieldnames=rectangle_header)
+            elif cls.__name__ == 'Square':
+                result = csv.DictWriter(f, fieldnames=square_header)
+            result.writeheader()
+            result.writerows(data)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Method that deserializes in CSV
+        """
+        filename = "{}.csv".format(cls.__name__)
+        instance_list = []
+        try:
+            with open(filename) as f:
+                result = csv.DictReader(f)
+                for row in result:
+                    row = dict(row)
+                    for key in row:
+                        row[key] = int(row[key])
+                    instance = cls.create(**row)
+                    instance_list.append(instance)
+        except FileNotFoundError:
+            return instance_list
+        return instance_list
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Method that draws the shape with turtle module
+        """
+
+        # Open screen and set the turtle in the center
+        s = turtle.getscreen()
+        t = turtle.Turtle()
+
+        # Customize turtle and screen background
+        t.shape("turtle")
+        turtle.bgcolor("black")
+
+        # Customize pen
+        t.pen(pencolor="blue", fillcolor="white", pensize=5, speed=5)
+
+        # Extract the data from the instance rectangle list
+        for instance in list_rectangles:
+            data = instance.to_dictionary()
+            # Set the position acording the rectangle object
+            t.setpos(data['x'], data['y'])
+            # Draw process
+            for i in range(2):
+                t.forward(data['width'])
+                t.right(90)
+                t.forward(data['height'])
+                t.right(90)
+
+        # Extract the data from the instance square list
+        for instance in list_squares:
+            data = instance.to_dictionary()
+            # Set the position acording the square object
+            t.setpos(data['x'], data['y'])
+            # Draw process
+            for i in range(2):
+                t.forward(data['size'])
+                t.right(90)
