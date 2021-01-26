@@ -132,6 +132,9 @@ class Test_rectangle(unittest.TestCase):
             r1.update(id=10, x=10, y=20, width=40, height=-60)
         with self.assertRaises(TypeError):
             r1.update(id=10, x=10, y=20, width="30", height=40)
+        with self.assertRaises(AttributeError):
+            r2 = None
+            r2.to_dictionary
 
     def test_area(self):
         """Check area method of rectangle objects

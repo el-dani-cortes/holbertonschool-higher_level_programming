@@ -77,6 +77,7 @@ class Test_square(unittest.TestCase):
         """Check for raises errors
         """
         print("--->Check for important raises errors")
+        # checks for instances
         with self.assertRaises(TypeError):
             s1 = Square()
         with self.assertRaises(NameError):
@@ -98,12 +99,32 @@ class Test_square(unittest.TestCase):
             s9 = Square(10, -4, 5, 10)
         with self.assertRaises(TypeError):
             s10 = Square(10, 4, 5, 10, 100)
+        # Checks for setters
         with self.assertRaises(ValueError):
             s1.x = -4
+        with self.assertRaises(TypeError):
+            s1.x = "4"
         with self.assertRaises(ValueError):
             s1.size = -10
         with self.assertRaises(TypeError):
             s1.size = "10"
+        with self.assertRaises(ValueError):
+            s1.y = -4
+        with self.assertRaises(TypeError):
+            s1.y = "30"
+        #checks to_dicitonary method
+        with self.assertRaises(AttributeError):
+            s2 = None
+            s2.to_dictionary
+        # Checks for update method
+        with self.assertRaises(ValueError):
+            s1.update(10, -10, 20, 40)
+        with self.assertRaises(TypeError):
+            s1.update(10, 10, "20", 40)
+        with self.assertRaises(ValueError):
+            s1.update(id=10, x=10, y=-20, size=40)
+        with self.assertRaises(TypeError):
+            s1.update(id=10, x=10, y=20, size="30")
 
     def test_area(self):
         """Check area method of rectangle objects
