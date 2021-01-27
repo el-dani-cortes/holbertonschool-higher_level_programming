@@ -159,6 +159,7 @@ class Rectangle(Base):
 
         Args:
            *args: list of arguments
+           **kwargs: Dictionary with arguments
 
         Return:
            Always nothing
