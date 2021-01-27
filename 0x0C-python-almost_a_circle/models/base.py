@@ -30,6 +30,12 @@ class Base:
     def to_json_string(list_dictionaries):
         """Method that returns the JSON
            string representation
+
+        Args:
+           list_dictionaries(dict): List of dictionaries
+
+        Return:
+           JSON string
         """
         if list_dictionaries is None or bool(list_dictionaries) is False:
             return "[]"
@@ -41,6 +47,12 @@ class Base:
     def save_to_file(cls, list_objs):
         """ Method that writes the JSON string representation
             of list_objs to a file
+
+        Args:
+            list_objs(list): List of objects
+
+        Return:
+            Always nothing
         """
         filename = "{}.json".format(cls.__name__)
         list_dictionaries = []
@@ -59,6 +71,12 @@ class Base:
     def from_json_string(json_string):
         """Method that returns the list of the
            JSON string representation
+
+        Args:
+           json_string: JSON string
+
+        Return:
+           Python object
         """
         if json_string is None or bool(json_string) is False:
             return "[]"
@@ -105,6 +123,12 @@ class Base:
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """Method that serializes in CSV
+
+        Args:
+           list_objs(list): List of objects
+
+        Return:
+           Always nothing
         """
         filename = "{}.csv".format(cls.__name__)
         data = []
@@ -147,6 +171,13 @@ class Base:
     @staticmethod
     def draw(list_rectangles, list_squares):
         """Method that draws the shape with turtle module
+
+        Args:
+           list_squares(list): List of square objects
+           list_rectangles(list): List of rectangle objects
+
+        Return:
+           Always nothing
         """
         # Open screen and set the turtle in the center
         s = turtle.getscreen()
