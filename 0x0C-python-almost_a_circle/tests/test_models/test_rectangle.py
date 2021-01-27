@@ -9,13 +9,12 @@ from io import StringIO
 
 
 class Test_rectangle(unittest.TestCase):
-    """Defines a class to evaluate diferent test cases for base.py file
+    """Defines a class to evaluate diferent test cases for rectangle.py file
     """
 
     def test_instance_class(self):
         """Checks for a instance of the class
         """
-        print("---> Check instance, type and ids")
         r1 = Rectangle(10, 2)
         self.assertIsInstance(r1, Rectangle)
         self.assertTrue(issubclass(Rectangle, Base))
@@ -28,7 +27,6 @@ class Test_rectangle(unittest.TestCase):
     def test_init_attributes(self):
         """Checks when id is none
         """
-        print("--->Check init method")
         r1 = Rectangle(10, 60)
         self.assertEqual(r1.id, 1)
         self.assertEqual(r1.width, 10)
@@ -79,7 +77,6 @@ class Test_rectangle(unittest.TestCase):
     def test_raise_errors(self):
         """Check for raises errors
         """
-        print("--->Check for important raises errors")
         # Checks for diferents instances
         with self.assertRaises(TypeError):
             r1 = Rectangle()
@@ -139,7 +136,6 @@ class Test_rectangle(unittest.TestCase):
     def test_area(self):
         """Check area method of rectangle objects
         """
-        print("--->Checks area method")
         r1 = Rectangle(3, 2)
         area = r1.area()
         self.assertEqual(area, 6)
@@ -157,41 +153,41 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(area, 25)
 
     def test_display(self):
-        print("--->Check display triangle")
+        """Checks display method
+        """
         output_1 = "#\n"
         r1 = Rectangle(1, 1)
-        with patch('sys.stdout', new = StringIO()) as mock_out:
+        with patch('sys.stdout', new=StringIO()) as mock_out:
             r1.display()
             self.assertEqual(mock_out.getvalue(), output_1)
 
         output_2 = "#####\n#####\n"
         r2 = Rectangle(5, 2)
-        with patch('sys.stdout', new = StringIO()) as mock_out:
+        with patch('sys.stdout', new=StringIO()) as mock_out:
             r2.display()
             self.assertEqual(mock_out.getvalue(), output_2)
 
         output_3 = "\n\n##\n##\n"
         r3 = Rectangle(2, 2, 0, 2)
-        with patch('sys.stdout', new = StringIO()) as mock_out:
+        with patch('sys.stdout', new=StringIO()) as mock_out:
             r3.display()
             self.assertEqual(mock_out.getvalue(), output_3)
 
         output_4 = "  ##\n  ##\n"
         r4 = Rectangle(2, 2, 2, 0)
-        with patch('sys.stdout', new = StringIO()) as mock_out:
+        with patch('sys.stdout', new=StringIO()) as mock_out:
             r4.display()
             self.assertEqual(mock_out.getvalue(), output_4)
 
         output_5 = "\n\n  ##\n  ##\n"
         r5 = Rectangle(2, 2, 2, 2)
-        with patch('sys.stdout', new = StringIO()) as mock_out:
+        with patch('sys.stdout', new=StringIO()) as mock_out:
             r5.display()
             self.assertEqual(mock_out.getvalue(), output_5)
 
     def test_str(self):
-        """Check str method
+        """Checks str method
         """
-        print("--->Check str method")
         r1 = Rectangle(4, 6, 2, 1, 12)
         self.assertEqual(str(r1), "[Rectangle] (12) 2/1 - 4/6")
         r2 = Rectangle(5, 5, 1)
@@ -202,7 +198,7 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(r4.__str__(), "[Rectangle] (50) 2/1 - 4/6")
 
     def test_update(self):
-        """Check update method
+        """Checks update method
         """
         r1 = Rectangle(10, 10, 10, 10)
         self.assertEqual(r1.__str__(), "[Rectangle] (1) 10/10 - 10/10")
@@ -230,32 +226,36 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(r1.__str__(), "[Rectangle] (50) 10/10 - 10/10")
 
     def test_dictionary_representation(self):
-        """Check to_dictionary method
+        """Checks to_dictionary method
         """
         r1 = Rectangle(10, 2, 1, 9)
         r1_dictionary = r1.to_dictionary()
-        self.assertEqual(r1_dictionary, {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10})
+        self.assertEqual(r1_dictionary, {'x': 1, 'y': 9, 'id': 1, 'height': 2,
+                                         'width': 10})
 
         r2 = Rectangle(10, 2, 1, 9, 30)
         r2_dictionary = r2.to_dictionary()
-        self.assertEqual(r2_dictionary, {'x': 1, 'y': 9, 'id': 30, 'height': 2, 'width': 10})
+        self.assertEqual(r2_dictionary, {'x': 1, 'y': 9, 'id': 30, 'height': 2,
+                                         'width': 10})
 
         r3 = Rectangle(10, 2)
         r3_dictionary = r3.to_dictionary()
-        self.assertEqual(r3_dictionary, {'x': 0, 'y': 0, 'id': 2, 'height': 2, 'width': 10})
+        self.assertEqual(r3_dictionary, {'x': 0, 'y': 0, 'id': 2, 'height': 2,
+                                         'width': 10})
 
         r4 = Rectangle(10, 2)
         r4_dictionary = r4.to_dictionary()
-        self.assertEqual(r4_dictionary, {'x': 0, 'y': 0, 'id': 3, 'height': 2, 'width': 10})
+        self.assertEqual(r4_dictionary, {'x': 0, 'y': 0, 'id': 3, 'height': 2,
+                                         'width': 10})
 
         r5 = Rectangle(10, 2, 5, 6)
         r5_dictionary = r5.to_dictionary()
-        self.assertEqual(r5_dictionary, {'x': 5, 'y': 6, 'id': 4, 'height': 2, 'width': 10})
+        self.assertEqual(r5_dictionary, {'x': 5, 'y': 6, 'id': 4, 'height': 2,
+                                         'width': 10})
 
     def tearDown(self):
         """Tear down test method
         """
-        print("Tear down - Reset nb_object attribute to zero")
         Base._Base__nb_objects = 0
 
 if __name__ == '__main__':

@@ -16,7 +16,6 @@ class Test_square(unittest.TestCase):
     def test_instance_class(self):
         """Checks for a instance of the class
         """
-        print("---> Check instance, type and ids")
         s1 = Square(10)
         self.assertIsInstance(s1, Square)
         self.assertTrue(issubclass(Square, Rectangle))
@@ -32,7 +31,6 @@ class Test_square(unittest.TestCase):
     def test_init_attributes(self):
         """Checks when id is none
         """
-        print("--->Check init method")
         s1 = Square(10)
         self.assertEqual(s1.id, 1)
         self.assertEqual(s1.size, 10)
@@ -76,7 +74,6 @@ class Test_square(unittest.TestCase):
     def test_raise_errors(self):
         """Check for raises errors
         """
-        print("--->Check for important raises errors")
         # checks for instances
         with self.assertRaises(TypeError):
             s1 = Square()
@@ -112,7 +109,7 @@ class Test_square(unittest.TestCase):
             s1.y = -4
         with self.assertRaises(TypeError):
             s1.y = "30"
-        #checks to_dicitonary method
+        # checks to_dicitonary method
         with self.assertRaises(AttributeError):
             s2 = None
             s2.to_dictionary
@@ -127,9 +124,8 @@ class Test_square(unittest.TestCase):
             s1.update(id=10, x=10, y=20, size="30")
 
     def test_area(self):
-        """Check area method of rectangle objects
+        """Check area method of square objects
         """
-        print("--->Checks area method")
         s1 = Square(3, 2)
         area = s1.area()
         self.assertEqual(area, 9)
@@ -151,40 +147,41 @@ class Test_square(unittest.TestCase):
         self.assertEqual(area, 100)
 
     def test_display(self):
-        print("--->Check display triangle")
+        """Checks display method for square
+        """
         output_1 = "#\n"
         s1 = Square(1)
-        with patch('sys.stdout', new = StringIO()) as mock_out:
+        with patch('sys.stdout', new=StringIO()) as mock_out:
             s1.display()
             self.assertEqual(mock_out.getvalue(), output_1)
 
         output_2 = "##\n##\n"
         s2 = Square(2, 0)
-        with patch('sys.stdout', new = StringIO()) as mock_out:
+        with patch('sys.stdout', new=StringIO()) as mock_out:
             s2.display()
             self.assertEqual(mock_out.getvalue(), output_2)
 
         output_3 = "\n\n  ###\n  ###\n  ###\n"
         s3 = Square(3, 2, 2, 2)
-        with patch('sys.stdout', new = StringIO()) as mock_out:
+        with patch('sys.stdout', new=StringIO()) as mock_out:
             s3.display()
             self.assertEqual(mock_out.getvalue(), output_3)
 
         output_4 = "  ##\n  ##\n"
         s4 = Square(2, 2, 0)
-        with patch('sys.stdout', new = StringIO()) as mock_out:
+        with patch('sys.stdout', new=StringIO()) as mock_out:
             s4.display()
             self.assertEqual(mock_out.getvalue(), output_4)
 
         output_5 = "\n\n  ##\n  ##\n"
         s5 = Square(2, 2, 2)
-        with patch('sys.stdout', new = StringIO()) as mock_out:
+        with patch('sys.stdout', new=StringIO()) as mock_out:
             s5.display()
             self.assertEqual(mock_out.getvalue(), output_5)
 
         output_6 = "\n\n\n  ##\n  ##\n"
         s6 = Square(2, 2, 3, 100)
-        with patch('sys.stdout', new = StringIO()) as mock_out:
+        with patch('sys.stdout', new=StringIO()) as mock_out:
             s6.display()
             self.assertEqual(mock_out.getvalue(), output_6)
 
@@ -253,7 +250,6 @@ class Test_square(unittest.TestCase):
     def tearDown(self):
         """Tear down test method
         """
-        print("Tear down - Reset nb_object attribute to zero")
         Base._Base__nb_objects = 0
 
 if __name__ == '__main__':
