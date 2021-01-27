@@ -5,6 +5,7 @@ import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
+import os
 
 
 class Test_Base(unittest.TestCase):
@@ -146,6 +147,33 @@ class Test_Base(unittest.TestCase):
 
         Rectangle.save_to_file(None)
         with open("Rectangle.json", "r") as file:
+            self.assertEqual(file.read(), '[]')
+
+        # check for square object
+        r1 = Square(10, 7, 2, 8)
+        r2 = Square(2, 4)
+        Square.save_to_file([r1, r2])
+        with open("Square.json", "r") as file:
+            sum_read = sum(list(map(lambda x: ord(x), file.read())))
+            sum_expected = sum(list(map(lambda x: ord(x), '[{"y": 2, "x": 7, '
+                                        '"id": 8, "size": 10}, '
+                                        '{"y": 0, "x": 4, "id": 5, '
+                                        '"size": 2}]')))
+            self.assertEqual(sum_read, sum_expected)
+
+        r1 = Square(10, 7)
+        r2 = Square(2, 4)
+        Square.save_to_file([r1, r2])
+        with open("Square.json", "r") as file:
+            sum_read = sum(list(map(lambda x: ord(x), file.read())))
+            sum_expected = sum(list(map(lambda x: ord(x), '[{"y": 0, "x": 7, '
+                                        '"id": 6, "size": 10}, '
+                                        '{"y": 0, "x": 4, "id": 7, '
+                                        '"size": 2}]')))
+            self.assertEqual(sum_read, sum_expected)
+
+        Square.save_to_file(None)
+        with open("Square.json", "r") as file:
             self.assertEqual(file.read(), '[]')
 
     def test_from_json_string(self):
@@ -350,6 +378,22 @@ class Test_Base(unittest.TestCase):
         """Tear down test method to reset class attribute
         """
         Base._Base__nb_objects = 0
+        try:
+            os.remove("Rectangle.json")
+        except Exception:
+            pass
+        try:
+            os.remove("Square.json")
+        except Exception:
+            pass
+        try:
+            os.remove("Rectangle.csv")
+        except Exception:
+            pass
+        try:
+            os.remove("Square.csv")
+        except Exception:
+            pass
 
 if __name__ == '__main__':
     unittest.main()

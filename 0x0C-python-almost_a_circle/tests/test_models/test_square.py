@@ -188,7 +188,6 @@ class Test_square(unittest.TestCase):
     def test_str(self):
         """Check str method
         """
-        print("--->Check str method")
         s1 = Square(4, 6, 2, 1)
         self.assertEqual(str(s1), "[Square] (1) 6/2 - 4")
         s2 = Square(5, 5, 1)
@@ -248,9 +247,25 @@ class Test_square(unittest.TestCase):
         self.assertEqual(s5_dictionary, {'x': 2, 'y': 5, 'id': 6, 'size': 10})
 
     def tearDown(self):
-        """Tear down test method
+        """Tear down test method to reset class attribute
         """
         Base._Base__nb_objects = 0
+        try:
+            os.remove("Rectangle.json")
+        except Exception:
+            pass
+        try:
+            os.remove("Square.json")
+        except Exception:
+            pass
+        try:
+            os.remove("Rectangle.csv")
+        except Exception:
+            pass
+        try:
+            os.remove("Square.csv")
+        except Exception:
+            pass
 
 if __name__ == '__main__':
     unittest.main()

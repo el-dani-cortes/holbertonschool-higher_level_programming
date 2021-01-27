@@ -254,9 +254,25 @@ class Test_rectangle(unittest.TestCase):
                                          'width': 10})
 
     def tearDown(self):
-        """Tear down test method
+        """Tear down test method to reset class attribute
         """
         Base._Base__nb_objects = 0
+        try:
+            os.remove("Rectangle.json")
+        except Exception:
+            pass
+        try:
+            os.remove("Square.json")
+        except Exception:
+            pass
+        try:
+            os.remove("Rectangle.csv")
+        except Exception:
+            pass
+        try:
+            os.remove("Square.csv")
+        except Exception:
+            pass
 
 if __name__ == '__main__':
     unittest.main()
