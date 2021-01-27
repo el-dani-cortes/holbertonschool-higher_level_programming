@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/pytho3
 """Module base"""
 import json
 import csv
@@ -77,11 +77,11 @@ class Base:
 
         Return:
            Python object
+
         """
         if json_string is None or bool(json_string) is False:
-            return "[]"
-        else:
-            return json.loads(json_string)
+            json_string = "[]"
+        return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
