@@ -79,7 +79,7 @@ class Base:
            Python object
 
         """
-        if json_string is None or bool(json_string) is False:
+        if json_string is None or len(json_string) == 0:
             json_string = "[]"
         return json.loads(json_string)
 
