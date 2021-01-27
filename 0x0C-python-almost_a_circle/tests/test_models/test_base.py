@@ -149,6 +149,10 @@ class Test_Base(unittest.TestCase):
         with open("Rectangle.json", "r") as file:
             self.assertEqual(file.read(), '[]')
 
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(file.read(), '[]')
+
         # check for square object
         r1 = Square(10, 7, 2, 8)
         r2 = Square(2, 4)
@@ -173,6 +177,10 @@ class Test_Base(unittest.TestCase):
             self.assertEqual(sum_read, sum_expected)
 
         Square.save_to_file(None)
+        with open("Square.json", "r") as file:
+            self.assertEqual(file.read(), '[]')
+
+        Square.save_to_file([])
         with open("Square.json", "r") as file:
             self.assertEqual(file.read(), '[]')
 
@@ -288,6 +296,7 @@ class Test_Base(unittest.TestCase):
     def test_load_from_file(self):
         """Checks for load_from_file
         """
+        # Check for rectangle load from file
         list_rectangles_output = Rectangle.load_from_file()
         self.assertEqual(str(list_rectangles_output), "[]")
 
@@ -314,6 +323,34 @@ class Test_Base(unittest.TestCase):
         list_rectangles_output = Rectangle.load_from_file()
         self.assertEqual(str(r1), str(list_rectangles_output[0]))
         self.assertEqual(str(r2), str(list_rectangles_output[1]))
+
+        # Check for square load from file
+        list_square_output = Square.load_from_file()
+        self.assertEqual(str(list_square_output), "[]")
+
+        s1 = Square(10, 7, 2, 8)
+        s2 = Square(2, 4)
+        list_square_input = [s1, s2]
+        Square.save_to_file(list_square_input)
+        list_square_output = Square.load_from_file()
+        self.assertEqual(str(s1), str(list_square_output[0]))
+        self.assertEqual(str(s2), str(list_square_output[1]))
+
+        s1 = Square(10, 50)
+        s2 = Square(2, 0, 0, 89)
+        list_square_input = [s1, s2]
+        Square.save_to_file(list_square_input)
+        list_square_output = Square.load_from_file()
+        self.assertEqual(str(s1), str(list_square_output[0]))
+        self.assertEqual(str(s2), str(list_square_output[1]))
+
+        s1 = Square(10, 50)
+        s2 = Square(2, 4, 0, 0)
+        list_square_input = [s1, s2]
+        Square.save_to_file(list_square_input)
+        list_square_output = Square.load_from_file()
+        self.assertEqual(str(s1), str(list_square_output[0]))
+        self.assertEqual(str(s2), str(list_square_output[1]))
 
     def test_save_csv(self):
         """Checks save_csv method

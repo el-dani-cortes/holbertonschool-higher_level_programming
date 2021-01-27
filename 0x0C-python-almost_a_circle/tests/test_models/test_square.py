@@ -96,6 +96,9 @@ class Test_square(unittest.TestCase):
             s9 = Square(10, -4, 5, 10)
         with self.assertRaises(TypeError):
             s10 = Square(10, 4, 5, 10, 100)
+        with self.assertRaises(ValueError):
+            s11 = Square(0)
+
         # Checks for setters
         with self.assertRaises(ValueError):
             s1.x = -4

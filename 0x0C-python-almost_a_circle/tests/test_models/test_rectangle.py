@@ -89,20 +89,27 @@ class Test_rectangle(unittest.TestCase):
             r2 = Rectangle(10)
         with self.assertRaises(ValueError):
             r3 = Rectangle(10, -4)
-        with self.assertRaises(TypeError):
-            r4 = Rectangle(10, "4")
-        with self.assertRaises(TypeError):
-            r5 = Rectangle("10", 4)
-        with self.assertRaises(TypeError):
-            r6 = Rectangle(10, 4, "9")
-        with self.assertRaises(TypeError):
-            r7 = Rectangle(10, 4, 9, "20")
         with self.assertRaises(ValueError):
-            r8 = Rectangle(10, 4, -5, 7)
-        with self.assertRaises(ValueError):
-            r9 = Rectangle(10, 4, 5, -10)
+            r4 = Rectangle(-10, 4)
         with self.assertRaises(TypeError):
-            r10 = Rectangle(10, 4, 5, 10, 30, 60)
+            r5 = Rectangle(10, "4")
+        with self.assertRaises(TypeError):
+            r6 = Rectangle("10", 4)
+        with self.assertRaises(TypeError):
+            r7 = Rectangle(10, 4, "9")
+        with self.assertRaises(TypeError):
+            r8 = Rectangle(10, 4, 9, "20")
+        with self.assertRaises(ValueError):
+            r9 = Rectangle(10, 4, -5, 7)
+        with self.assertRaises(ValueError):
+            r10 = Rectangle(10, 4, 5, -10)
+        with self.assertRaises(TypeError):
+            r11 = Rectangle(10, 4, 5, 10, 30, 60)
+        with self.assertRaises(ValueError):
+            r12 = Rectangle(0, 10)
+        with self.assertRaises(ValueError):
+            r13 = Rectangle(15, 0)
+
         # Checks for setters
         with self.assertRaises(TypeError):
             r1.x = "4"
