@@ -151,7 +151,8 @@ class Test_Base(unittest.TestCase):
 
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
-            self.assertEqual(file.read(), '[]')
+            result = file.read()
+            self.assertEqual(result, '[]')
 
         # check for square object
         r1 = Square(10, 7, 2, 8)
@@ -182,6 +183,7 @@ class Test_Base(unittest.TestCase):
 
         Square.save_to_file([])
         with open("Square.json", "r") as file:
+            result = file.read()
             self.assertEqual(file.read(), '[]')
 
     def test_from_json_string(self):
