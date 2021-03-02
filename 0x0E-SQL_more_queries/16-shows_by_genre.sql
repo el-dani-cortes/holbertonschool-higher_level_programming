@@ -6,8 +6,8 @@
 -- The database name will be passed as an argument of the mysql command
 SELECT s.title AS title, g.name AS name
 FROM tv_genres AS g
-INNER JOIN tv_show_genres AS sg
+RIGHT JOIN tv_show_genres AS sg
       ON sg.genre_id = g.id
-LEFT JOIN tv_shows AS s
+RIGHT JOIN tv_shows AS s
       ON sg.show_id = s.id
 ORDER BY title ASC, name ASC;
