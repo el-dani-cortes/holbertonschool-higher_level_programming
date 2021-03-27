@@ -18,7 +18,7 @@ if __name__ == "__main__":
     states = session.query(State).filter(State.name == '{}'.
                                          format(sys.argv[4]))
     if states.first() is None:
-        print("Not Found")
+        print("Not found")
     else:
         for state in states:
             print("{}".format(state.id))
