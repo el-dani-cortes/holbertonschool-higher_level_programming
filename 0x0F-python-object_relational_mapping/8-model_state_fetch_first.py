@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Script that prints the first State object from the database hbtn_0e_6_usa
+Script that prints the first State object
+from the database hbtn_0e_6_usa.
 """
 import sys
 from model_state import Base, State
@@ -14,7 +15,7 @@ if __name__ == "__main__":
                            pool_pre_ping=True)
     Base.metadata.create_all(engine)
     session = Session(engine)
-    state = session.query(State).get(1)
+    state = session.query(State).first()
     if state:
         print("{}: {}".format(state.id, state.name))
     else:
