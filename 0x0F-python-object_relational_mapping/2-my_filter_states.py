@@ -18,10 +18,11 @@ if __name__ == "__main__":
         }
     conn = mdb.connect(**args)
     cur = conn.cursor()
-    cur.execute("SELECT * FROM states WHERE name=\'{}\' ORDER BY id"
+    cur.execute("SELECT * FROM states WHERE name='{}' ORDER BY id"
                 .format(sys.argv[4]))
     rows = cur.fetchall()
     for row in rows:
-        print(row)
+        if row[1] == sys.argv[4]:
+            print(row)
     cur.close()
     conn.close()
