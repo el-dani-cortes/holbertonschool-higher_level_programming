@@ -16,10 +16,9 @@ if __name__ == "__main__":
         "db": sys.argv[3],
         "charset": "utf8",
         }
-    d_base = sys.argv
     conn = mdb.connect(**args)
     cur = conn.cursor()
-    cur.execute("SELECT * FROM states WHERE name = %s", (d_base[4],))
+    cur.execute("SELECT * FROM states WHERE name='{}'".format(sys.argv[4]))
     rows = cur.fetchall()
     for row in rows:
         print(row)
