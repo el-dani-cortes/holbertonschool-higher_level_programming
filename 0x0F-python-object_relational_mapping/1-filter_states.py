@@ -18,7 +18,8 @@ if __name__ == "__main__":
     d_base = sys.argv
     conn = mdb.connect(**args)
     cur = conn.cursor()
-    cur.execute("SELECT * FROM states WHERE name LIKE 'N%'")
+    cur.execute("SELECT * FROM states WHERE name LIKE 'N%'\
+    ORDER BY states.id ASC")
     rows = cur.fetchall()
     for row in rows:
         print(row)
