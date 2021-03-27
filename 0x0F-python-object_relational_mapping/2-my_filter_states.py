@@ -21,8 +21,8 @@ if __name__ == "__main__":
     cur.execute("SELECT * FROM states WHERE name='{}' ORDER BY id"
                 .format(sys.argv[4]))
     rows = cur.fetchall()
-    for row in rows:
-        if row[1]:
+    if rows:
+        for row in rows:
             print(row)
     cur.close()
     conn.close()
