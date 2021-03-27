@@ -8,6 +8,9 @@ from model_state import Base, State
 
 
 class City(Base):
+    """
+    Class definition for the SQLAlchemy module
+    """
     __tablename__ = 'cities'
     id = Column(Integer, autoincrement=True, nullable=False, primary_key=True)
     name = Column(String(180), nullable=False)
