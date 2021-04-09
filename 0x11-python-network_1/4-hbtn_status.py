@@ -3,7 +3,6 @@
 Module using request that fetches https://intranet.hbtn.io/status
 """
 import requests
-from sys import argv
 
 
 def main():
