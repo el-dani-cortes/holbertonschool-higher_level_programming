@@ -14,14 +14,13 @@ def main(argv):
     """
     user = argv[1]
     password = argv[2]
-    if password == 'Batman':
-        token = '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'
-        response = requests.get('https://api.github.com/user',
-                                auth=HTTPBasicAuth(user, token))
+    response = requests.get('https://api.github.com/user',
+                            auth=HTTPBasicAuth(user, password))
+    try:
         profile_info = response.json()
         print(profile_info['id'])
-    else:
-        print(None)
+    except:
+        print('None')
 
 if __name__ == "__main__":
     main(argv)
