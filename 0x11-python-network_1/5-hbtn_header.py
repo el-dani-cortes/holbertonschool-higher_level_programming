@@ -15,8 +15,8 @@ def main(argv):
     """
     url = argv[1]
     r = requests.get(url)
-    headers = r.headers
-    print(headers['X-Request-Id'])
+    headers = r.headers.get('X-Request-Id')
+    print(headers)
 
 if __name__ == "__main__":
     main(argv)
