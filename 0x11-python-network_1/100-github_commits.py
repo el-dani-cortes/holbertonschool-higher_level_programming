@@ -29,14 +29,18 @@ def main(argv):
     headers = {"Accept": "application/vnd.github.v3+json"}
     response = requests.get('https://api.github.com/repos/' + owner +
                             '/' + repo + '/commits', headers=headers)
-    commit_list = response.json()
-    size = len(commit_list)
-    if size < 10:
-        for i in range(0, size - 1):
-            print_commits(i, commit_list)
-    else:
-        for i in range(0, 10):
-            print_commits(i, commit_list)
+    try:
+        commit_list = response.json()
+        size = len(commit_list)
+        if size < 10:
+            for i in range(0, size - 1):
+                print_commits(i, commit_list)
+        else:
+            for i in range(0, 10):
+                print_commits(i, commit_list)
+    except:
+        pass
+
 
 
 if __name__ == "__main__":
