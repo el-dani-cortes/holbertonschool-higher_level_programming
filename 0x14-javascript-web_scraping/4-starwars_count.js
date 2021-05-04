@@ -15,7 +15,7 @@ request(API, function (error, response, body) {
   let count = 0;
   objMovie.results.forEach(element => {
     element.characters.forEach(item => {
-      if (item === 'https://swapi-api.hbtn.io/api/people/' + id + '/') {
+      if (item.includes(id)) {
         count += 1;
       }
     });
