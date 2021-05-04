@@ -17,15 +17,21 @@ request(url, function (error, response, body) {
       users.push(item.userId);
     }
   });
-  const result = {};
+  let result = {};
+  let check = 0;
   users.forEach(item => {
     let counter = 0;
     content.forEach(element => {
       if (item === element.userId && element.completed === true) {
         counter += 1;
+        check = 1;
       }
     });
-    result[item] = counter;
+    if (check === 1) {
+      result[item] = counter;
+    } else {
+      result = {};
+    }
   });
   console.log(result);
 });
